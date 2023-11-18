@@ -1,0 +1,59 @@
+<launch>
+    <!-- config param -->
+    <!--arg name="pub_imu"       default="False" />
+    <arg name="sub_ackermann"       default="False" />
+    <arg name="lidar_frame" default="base_laser_link"/>  
+
+    <include file="$(find base_control)/launch/base_control.launch">
+        <arg name="pub_imu"            value="$(arg pub_imu)"/>  
+        <arg name="sub_ackermann"            value="$(arg sub_ackermann)"/>  
+    </include>
+
+    <include file="$(find robot_navigation)/launch/lidar.launch">
+        <arg name="lidar_frame"            value="$(arg lidar_frame)"/>  
+    </include-->
+	
+	
+	
+	
+	<!-- <node pkg="tf" type="static_transform_publisher" name="base_to_link" args="0.08 0 0 0 0 0 base_footprint base_link 20" /> -->
+ 	<!-- <node pkg="tf" type="static_transform_publisher" name="base_to_gyro" args="0.08 0 0 0 0 0 base_footprint gyro_link 20" /> -->
+	<!-- <node pkg="tf" type="static_transform_publisher" name="base_to_laser" args="0.14 0 0.11 3.14159 0 0 base_footprint base_laser_link 20" /> -->
+	<!-- <node pkg="tf" type="static_transform_publisher" name="base_to_camera" args="0.14 0 0.11 0 0 0 base_footprint camera_link 20" /> -->
+	
+	<param name = "robot_description" textfile = "$(find eprobot_description)/urdf/eprobot.urdf"/>
+	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+	
+	<arg name="lidar_frame" default="base_laser_link"/>  
+	<arg name="lidar_mode" default="Boost"/>	
+	
+	<node pkg="eprobot_start" type="art_racecar.py" name="base_control" output="screen">
+		<param name="base_kp"    type="double" value="8.47"/>
+		<param name="base_ki"    type="double" value="39.1"/>
+		<param name="base_kd"    type="double" value="0.18"/> 
+		
+		<!--param name="base_kp"    type="double" value="0.5"/>
+		<param name="base_ki"    type="double" value="17.0"/>
+		<param name="base_kd"    type="double" value="5.0"/--> 
+		
+		<param name="base_kv"    type="double" value="1.0"/>
+		
+		<param name="Laser_Mode"    type="string" value="$(arg lidar_mode)"/>
+		
+		
+	</node>
+	
+    <!--include file="$(find robot_navigation)/launch/lidar/$(arg lidar_type).launch"-->
+	<include file="$(find robot_navigation)/launch/lidar/rplidar.launch">
+        <arg name="lidar_frame"            value="$(arg lidar_frame)"/>
+		<arg name="lidar_mode"            value="$(arg lidar_mode)"/>
+    </include>
+	
+	<!--node pkg="tf" type="static_transform_publisher" name="base_footprint_to_laser"
+        args="0.0624 0.0 0.115 3.14159265 0.0 0.0 base_footprint $(arg lidar_frame) 20">
+    </node-->
+	
+
+    
+</launch>

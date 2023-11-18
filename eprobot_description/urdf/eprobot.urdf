@@ -1,0 +1,1028 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-1-g15f4949  Build Version: 1.6.7594.29634
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="eprobot_description">
+  <link
+    name="base_link">
+    <!-- <inertial> -->
+      <!-- <origin -->
+        <!-- xyz="-0.0022669 0.000732 0.044234" -->
+        <!-- rpy="0 0 0" /> -->
+      <!-- <mass -->
+        <!-- value="0.14259" /> -->
+      <!-- <inertia -->
+        <!-- ixx="0.0001682" -->
+        <!-- ixy="2.6267E-06" -->
+        <!-- ixz="1.9562E-09" -->
+        <!-- iyy="0.00069626" -->
+        <!-- iyz="1.6676E-08" -->
+        <!-- izz="0.00085931" /> -->
+    <!-- </inertial>  -->
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://eprobot_description/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.227451 0.45098 0.7882353 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://eprobot_description/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="left_steer_Link">
+    <!-- <inertial> -->
+      <!-- <origin -->
+        <!-- xyz="0.00289223464061653 0.00436469329440564 0.0190666352978092" -->
+        <!-- rpy="0 0 0" /> -->
+      <!-- <mass -->
+        <!-- value="0.00304874185579663" /> -->
+      <!-- <inertia -->
+        <!-- ixx="3.60627116729123E-07" -->
+        <!-- ixy="5.80026964761733E-08" -->
+        <!-- ixz="-3.92300483548765E-08" -->
+        <!-- iyy="4.64088231058092E-07" -->
+        <!-- iyz="1.2879058968619E-08" -->
+        <!-- izz="2.50806163115879E-07" /> -->
+    <!-- </inertial> -->
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://eprobot_description/meshes/left_steer_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.37255 0.3843137 0.43137 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://eprobot_description/meshes/left_steer_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_steer_joint"
+    type="revolute">
+    <origin
+      xyz="0.079302 0.073005 0.015606"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="left_steer_Link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-0.7854"
+      upper="0.7854"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="left_front_Link">
+    <!-- <inertial> -->
+      <!-- <origin -->
+        <!-- xyz="3.33822566717101E-06 1.1250633156221E-06 0.0159792900375405" -->
+        <!-- rpy="0 0 0" /> -->
+      <!-- <mass -->
+        <!-- value="0.0598169300747009" /> -->
+      <!-- <inertia -->
+        <!-- ixx="2.49612767048955E-05" -->
+        <!-- ixy="1.4331222218256E-09" -->
+        <!-- ixz="-6.66115793292593E-10" -->
+        <!-- iyy="2.49575072162332E-05" -->
+        <!-- iyz="-2.24486169683609E-10" -->
+        <!-- izz="4.22515892756475E-05" /> -->
+    <!-- </inertial>  -->
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://eprobot_description/meshes/left_front_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.29 0.29 0.29 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://eprobot_description/meshes/left_front_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_front_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="0 0.0071646 0.0182"
+      rpy="-1.5708 0 0" />
+    <parent
+      link="left_steer_Link" />
+    <child
+      link="left_front_Link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="right_steer_Link">
+    <!-- <inertial> -->
+      <!-- <origin -->
+        <!-- xyz="0.00289223464061651 -0.00436469329440559 0.0190666352978092" -->
+        <!-- rpy="0 0 0" /> -->
+      <!-- <mass -->
+        <!-- value="0.00304874185579663" /> -->
+     <!-- <inertia -->
+        <!-- ixx="3.60627116729123E-07" -->
+        <!-- ixy="-5.80026964761737E-08" -->
+        <!-- ixz="-3.92300483548766E-08" -->
+        <!-- iyy="4.64088231058092E-07" -->
+        <!-- iyz="-1.2879058968619E-08" -->
+        <!-- izz="2.5080616311588E-07" /> -->
+    <!-- </inertial>  -->
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://eprobot_description/meshes/right_steer_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.37255 0.3843137 0.43137 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://eprobot_description/meshes/right_steer_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_steer_joint"
+    type="revolute">
+    <origin
+      xyz="0.079302 -0.073865 0.015606"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="right_steer_Link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-0.7854"
+      upper="0.7854"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="right_front_Link">
+    <!-- <inertial> -->
+      <!-- <origin -->
+        <!-- xyz="-3.3388428127834E-06 1.12323049365932E-06 -0.0159792900375428" -->
+        <!-- rpy="0 0 0" /> -->
+      <!-- <mass -->
+        <!-- value="0.0598169300747018" /> -->
+     <!-- <inertia -->
+        <!-- ixx="2.49612782772991E-05" -->
+        <!-- ixy="-1.43105194717028E-09" -->
+        <!-- ixz="-6.66238933447561E-10" -->
+        <!-- iyy="2.49575056438309E-05" -->
+        <!-- iyz="2.24120445106832E-10" -->
+        <!-- izz="4.2251589275648E-05" /> -->
+    <!-- </inertial>  -->
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://eprobot_description/meshes/right_front_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.29 0.29 0.29 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://eprobot_description/meshes/right_front_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_front_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="0 -0.0071646 0.0182"
+      rpy="-1.5708 0 0" />
+    <parent
+      link="right_steer_Link" />
+    <child
+      link="right_front_Link" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="right_rear_Link">
+    <!-- <inertial> -->
+      <!-- <origin -->
+        <!-- xyz="2.73419737639724E-06 -7.04739553181524E-07 -0.0156586131289114" -->
+        <!-- rpy="0 0 0" /> -->
+      <!-- <mass -->
+        <!-- value="0.0614284738930155" /> -->
+     <!-- <inertia -->
+        <!-- ixx="2.5022438294889E-05" -->
+        <!-- ixy="-1.81914230476106E-09" -->
+        <!-- ixz="7.07590865813921E-10" -->
+        <!-- iyy="2.50186122013257E-05" -->
+        <!-- iyz="-2.68604018396925E-10" -->
+        <!-- izz="4.22825889650087E-05" /> -->
+    <!-- </inertial>  -->
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://eprobot_description/meshes/right_rear_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.29 0.29 0.29 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://eprobot_description/meshes/right_rear_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_rear_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="-0.083391 -0.08103 0.036923"
+      rpy="-1.5708 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="right_rear_Link" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="left_rear_Link">
+    <!-- <inertial> -->
+      <!-- <origin -->
+        <!-- xyz="-2.96566374549667E-06 -1.6504439990777E-06 0.0156586131289113" -->
+        <!-- rpy="0 0 0" /> -->
+      <!-- <mass -->
+        <!-- value="0.0614284738930153" /> -->
+     <!-- <inertia -->
+        <!-- ixx="2.50222307349982E-05" -->
+        <!-- ixy="1.11067581703436E-09" -->
+        <!-- ixz="6.94274856753452E-10" -->
+        <!-- iyy="2.50188197612165E-05" -->
+        <!-- iyz="1.66053209072512E-10" -->
+        <!-- izz="4.22825889650088E-05" /> -->
+    <!-- </inertial>  -->
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://eprobot_description/meshes/left_rear_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.29 0.29 0.29 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://eprobot_description/meshes/left_rear_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_rear_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="-0.083391 0.08017 0.036923"
+      rpy="-1.5708 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="left_rear_Link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="base_servo_Link">
+    <!-- <inertial> -->
+      <!-- <origin -->
+        <!-- xyz="0.0619025454392778 -0.00066454955366041 0.0344057778807545" -->
+        <!-- rpy="0 0 0" /> -->
+      <!-- <mass -->
+        <!-- value="0.0323679922654682" /> -->
+     <!-- <inertia -->
+        <!-- ixx="5.53746399876403E-06" -->
+        <!-- ixy="1.52126098150984E-07" -->
+        <!-- ixz="-5.0779921524441E-20" -->
+        <!-- iyy="5.35175217589866E-06" -->
+        <!-- iyz="3.29470896731958E-20" -->
+        <!-- izz="8.76953164037103E-06" /> -->
+    <!-- </inertial>  -->
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://eprobot_description/meshes/base_servo_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.0 0.0 0.0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://eprobot_description/meshes/base_servo_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="servo_joint"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="base_servo_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="base_motor_Link">
+    <!-- <inertial> -->
+      <!-- <origin -->
+        <!-- xyz="-0.0833914294785033 -0.000430033389498874 0.0436679450567612" -->
+        <!-- rpy="0 0 0" /> -->
+      <!-- <mass -->
+        <!-- value="0.0954495656077414" /> -->
+     <!-- <inertia -->
+        <!-- ixx="2.84560159178935E-05" -->
+        <!-- ixy="-3.85986902789604E-20" -->
+        <!-- ixz="2.14770954216475E-21" -->
+        <!-- iyy="1.44365955223347E-05" -->
+        <!-- iyz="1.34334131478612E-21" -->
+        <!-- izz="2.82361505215849E-05" /> -->
+    <!-- </inertial>  -->
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://eprobot_description/meshes/base_motor_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.6196 0.64313 0.698 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://eprobot_description/meshes/base_motor_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="motor_joint"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="base_motor_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="base_battery_Link">
+    <!-- <inertial> -->
+      <!-- <origin -->
+        <!-- xyz="-0.0211976776736241 0.000532798146782643 0.0389057778807545" -->
+        <!-- rpy="0 0 0" /> -->
+      <!-- <mass -->
+        <!-- value="0.114945445363653" /> -->
+     <!-- <inertia -->
+        <!-- ixx="5.63374137910994E-05" -->
+        <!-- ixy="3.4557776444687E-20" -->
+        <!-- ixz="-2.09380092552485E-21" -->
+        <!-- iyy="3.64651068350516E-05" -->
+        <!-- iyz="-1.55159510173094E-20" -->
+        <!-- izz="7.13369039400112E-05" /> -->
+    <!-- </inertial>  -->
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://eprobot_description/meshes/base_battery_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.0 0.27843 0.55294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://eprobot_description/meshes/base_battery_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="battery_joint"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="base_battery_Link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="base_sponge_Link">
+    <!-- <inertial> -->
+      <!-- <origin -->
+        <!-- xyz="0.139429875262666 -0.000445290187781333 0.0314057778807544" -->
+        <!-- rpy="0 0 0" /> -->
+      <!-- <mass -->
+        <!-- value="0.098440113074383" /> -->
+      <!-- <inertia -->
+        <!-- ixx="0.000152031833579528" -->
+        <!-- ixy="1.85509014944861E-08" -->
+        <!-- ixz="-3.35649333948662E-21" -->
+        <!-- iyy="1.40137859329382E-05" -->
+        <!-- iyz="2.88458022375564E-20" -->
+        <!-- izz="0.000158810271201499" /> -->
+    <!-- </inertial>  -->
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://eprobot_description/meshes/base_sponge_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.1451 0.1451 0.1451 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://eprobot_description/meshes/base_sponge_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="sponge_joint"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="base_sponge_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="base_logo_Link">
+    <!-- <inertial> -->
+      <!-- <origin -->
+        <!-- xyz="0.115571209263384 0.000752780073843051 0.0809160588520901" -->
+        <!-- rpy="0 0 0" /> -->
+      <!-- <mass -->
+        <!-- value="0.0118516939683588" /> -->
+      <!-- <inertia -->
+        <!-- ixx="2.80468651079604E-06" -->
+        <!-- ixy="1.0567466181185E-08" -->
+        <!-- ixz="1.88228706436508E-08" -->
+        <!-- iyy="1.11392031627923E-06" -->
+        <!-- iyz="1.57139896398864E-10" -->
+        <!-- izz="3.40469209513641E-06" /> -->
+    <!-- </inertial>  -->
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://eprobot_description/meshes/base_logo_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.1451 0.1451 0.1451 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://eprobot_description/meshes/base_logo_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="logo_joint"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="base_logo_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="base_rgbd_Link">
+    <!-- <inertial> -->
+      <!-- <origin -->
+        <!-- xyz="0.118977536029625 0.000674739847919659 0.11222002376395" -->
+        <!-- rpy="0 0 0" /> -->
+      <!-- <mass -->
+        <!-- value="0.115699631867042" /> -->
+      <!-- <inertia -->
+        <!-- ixx="0.000204265659505075" -->
+        <!-- ixy="6.88430069011116E-20" -->
+        <!-- ixz="-4.83328439671427E-06" -->
+        <!-- iyy="2.61637817208186E-05" -->
+        <!-- iyz="-2.40715182669504E-20" -->
+        <!-- izz="0.000205264746993196" /> -->
+    <!-- </inertial> -->
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://eprobot_description/meshes/base_rgbd_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.662745 0.67843 0.68627451 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://eprobot_description/meshes/base_rgbd_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="rgbd_joint"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="base_rgbd_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="base_laser_Link">
+    <!-- <inertial> -->
+      <!-- <origin -->
+        <!-- xyz="0.046695816217113 0.0012659061110642 0.119051994714634" -->
+        <!-- rpy="0 0 0" /> -->
+      <!-- <mass -->
+        <!-- value="0.0547011657689784" /> -->
+      <!-- <inertia -->
+        <!-- ixx="1.8368356264676E-05" -->
+        <!-- ixy="6.47861712042421E-09" -->
+        <!-- ixz="4.4877282000422E-07" -->
+        <!-- iyy="2.23573352338705E-05" -->
+        <!-- iyz="-1.91164618789875E-08" -->
+        <!-- izz="3.93597982652403E-05" /> -->
+    <!-- </inertial>  -->
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://eprobot_description/meshes/base_laser_rviz_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.09 0.09 0.09 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://eprobot_description/meshes/base_laser_rviz_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="laser_joint"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="base_laser_Link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="base_imu_Link">
+    <!-- <inertial> -->
+      <!-- <origin -->
+        <!-- xyz="-0.0548948807650051 -0.0132949039101318 0.0907689823207151" -->
+        <!-- rpy="0 0 0" /> -->
+      <!-- <mass -->
+        <!-- value="0.0305561977168959" /> -->
+      <!-- <inertia -->
+        <!-- ixx="1.06663693824962E-05" -->
+        <!-- ixy="2.81577969635708E-08" -->
+        <!-- ixz="-3.02840712977933E-10" -->
+        <!-- iyy="5.99449066052526E-06" -->
+        <!-- iyz="9.87439154743621E-09" -->
+        <!-- izz="1.60104670537981E-05" /> -->
+    <!-- </inertial>  -->
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://eprobot_description/meshes/base_imu_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.0 0.0 0.0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://eprobot_description/meshes/base_imu_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="imu_joint"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="base_imu_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="base_oled_Link">
+    <!-- <inertial> -->
+      <!-- <origin -->
+        <!-- xyz="-0.0482510274399125 0.0247323285853632 0.117430607596576" -->
+        <!-- rpy="0 0 0" /> -->
+      <!-- <mass -->
+        <!-- value="0.00144374816483768" /> -->
+      <!-- <inertia -->
+        <!-- ixx="8.24042131844688E-08" -->
+        <!-- ixy="-1.83018076981713E-10" -->
+        <!-- ixz="-1.16878862802072E-10" -->
+        <!-- iyy="5.92183304155015E-08" -->
+        <!-- iyz="-7.6139639540449E-12" -->
+        <!-- izz="1.3971296255493E-07" />  -->
+    <!-- </inertial>  -->
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://eprobot_description/meshes/base_oled_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.0 0.0078 0.2549 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://eprobot_description/meshes/base_oled_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="oled_joint"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="base_oled_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="base_cover_Link">
+    <!-- <inertial> -->
+      <!-- <origin -->
+        <!-- xyz="-0.0713562250777211 -0.00104866793905717 0.128468245993963" -->
+        <!-- rpy="0 0 0" /> -->
+      <!-- <mass -->
+        <!-- value="0.0120523891087706" /> -->
+      <!-- <inertia -->
+        <!-- ixx="1.04305947660859E-05" -->
+        <!-- ixy="5.80709619620314E-07" -->
+        <!-- ixz="-1.20074116800715E-09" -->
+        <!-- iyy="6.53127978008636E-06" -->
+        <!-- iyz="5.36859535071333E-10" -->
+        <!-- izz="1.6956754902159E-05" />  -->
+    <!-- </inertial>  -->
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://eprobot_description/meshes/base_cover_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.0 0.0 0.0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://eprobot_description/meshes/base_cover_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="cover_joint"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="base_cover_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="base_copper_Link">
+    <!-- <inertial> -->
+      <!-- <origin -->
+        <!-- xyz="0.00641386009874981 7.08046849264843E-05 0.0586150007540841" -->
+        <!-- rpy="0 0 0" /> -->
+      <!-- <mass -->
+        <!-- value="0.00789066626311039" /> -->
+      <!-- <inertia -->
+        <!-- ixx="9.60105260413952E-07" -->
+        <!-- ixy="-2.72990162373776E-23" -->
+        <!-- ixz="2.35259732974074E-22" -->
+        <!-- iyy="9.60105260413952E-07" -->
+        <!-- iyz="8.88384489323015E-23" -->
+        <!-- izz="3.27890020374792E-08" />  -->
+    <!-- </inertial>  -->
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://eprobot_description/meshes/base_copper_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.9451 0.82353 0.498 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://eprobot_description/meshes/base_copper_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="copper_joint"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="base_copper_Link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="base_silver_Link">
+    <!-- <inertial> -->
+      <!-- <origin -->
+        <!-- xyz="0 0 0" -->
+        <!-- rpy="0 0 0" /> -->
+      <!-- <mass -->
+        <!-- value="0" /> -->
+       <!-- <inertia -->
+        <!-- ixx="0" -->
+        <!-- ixy="0" -->
+        <!-- ixz="0" -->
+        <!-- iyy="0" -->
+        <!-- iyz="0" -->
+        <!-- izz="0" />  -->
+    <!-- </inertial>  -->
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://eprobot_description/meshes/base_silver_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.71764 0.741176 0.839215 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://eprobot_description/meshes/base_silver_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="silver_joint"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="base_silver_Link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</robot>

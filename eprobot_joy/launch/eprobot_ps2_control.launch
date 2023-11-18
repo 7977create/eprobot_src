@@ -1,0 +1,13 @@
+<launch>
+
+	<node pkg="eprobot_joy" type="eprobot_joy_node" name="joy_controller" output="screen">
+		<param name="joystick_device"     type="string" value="/dev/input/js0"/>  
+		<param name="maxLinear_x"    type="double" value="0.5"/>
+		<param name="maxLinear_y"    type="double" value="0.2"/>
+		<param name="maxAngular_z"   type="double" value="2.5"/> 
+		<param name="joystick_mode"   type="int" value="2"/>
+	</node>
+	
+</launch>
+
+

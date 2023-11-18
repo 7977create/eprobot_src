@@ -1,0 +1,27 @@
+<launch>
+
+	<node pkg="eprobot_start" type="art_racecar.py" name="base_control" output="screen">
+		
+		<!--param name="base_kp"    type="double" value="8.47"/>
+		<param name="base_ki"    type="double" value="39.1"/>
+		<param name="base_kd"    type="double" value="0.18"/--> 
+		
+		<param name="base_kp"    type="double" value="0.5"/>
+		<param name="base_ki"    type="double" value="17.0"/>
+		<param name="base_kd"    type="double" value="5.0"/> 
+		
+		<param name="base_kv"    type="double" value="1.0"/>
+	</node>
+	
+	<!--arg name="lidar_frame" default="base_laser_link"/-->  
+	<arg name="lidar_mode" value="Boost"/>	
+
+    <!--include file="$(find robot_navigation)/launch/lidar/$(arg lidar_type).launch"-->
+	<!--include file="$(find robot_navigation)/launch/lidar/rplidar.launch">
+        <arg name="lidar_frame"            value="$(arg lidar_frame)"/>
+    </include-->
+
+  
+  
+
+</launch>

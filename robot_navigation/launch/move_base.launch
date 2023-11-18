@@ -1,0 +1,50 @@
+<launch>
+  <!-- Arguments -->
+  <arg name="cmd_vel_topic" default="cmd_vel" />
+  <arg name="odom_topic" default="odom" />
+  <arg name="planner"  default="dwa" doc="opt: dwa, teb"/> 
+  <arg name="simulation" default= "false"/> 
+  <!--remap from="/odom" to="/odometry/filtered"/-->
+  <remap from="scan" to="scan_filtered" />
+  <!--arg name="base_type" default= "$(env BASE_TYPE)"/--> 
+  <!--arg name="base_type" default= "/dev/EPRobot_laser"/--> 
+  <!--arg name="base_type" default= "NanoCar"/-->
+
+  <!-- move_base use DWA planner-->
+  <group if="$(eval planner == 'dwa')">
+    <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+      <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" />
+      <rosparam file="$(find robot_navigation)/param/EPRobot/costmap_common_params.yaml" command="load" ns="global_costmap" />
+      <rosparam file="$(find robot_navigation)/param/EPRobot/costmap_common_params.yaml" command="load" ns="local_costmap" />
+      <rosparam file="$(find robot_navigation)/param/EPRobot/local_costmap_params.yaml" command="load" />
+      <rosparam file="$(find robot_navigation)/param/EPRobot/global_costmap_params.yaml" command="load" />
+      <rosparam file="$(find robot_navigation)/param/EPRobot/move_base_params.yaml" command="load" />
+      <rosparam file="$(find robot_navigation)/param/EPRobot/dwa_local_planner_params.yaml" command="load" />
+	  <!--rosparam file="$(find robot_navigation)/param/$(env BASE_TYPE)/dwa_local_planner_params.yaml" command="load" /-->
+      <remap from="cmd_vel" to="$(arg cmd_vel_topic)"/>
+      <remap from="odom" to="$(arg odom_topic)"/>
+    </node>
+  </group>
+  <!-- move_base use TEB planner-->
+  <group if="$(eval planner == 'teb')">
+    <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+      <param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS" />
+      <rosparam file="$(find robot_navigation)/param/EPRobot/costmap_common_params.yaml" command="load" ns="global_costmap" />
+      <rosparam file="$(find robot_navigation)/param/EPRobot/costmap_common_params.yaml" command="load" ns="local_costmap" />
+      <rosparam file="$(find robot_navigation)/param/EPRobot/local_costmap_params.yaml" command="load" />
+      <rosparam file="$(find robot_navigation)/param/EPRobot/global_costmap_params.yaml" command="load" />
+      <rosparam file="$(find robot_navigation)/param/EPRobot/move_base_params.yaml" command="load" />
+      <rosparam file="$(find robot_navigation)/param/EPRobot/teb_local_planner_params.yaml" command="load" />
+      <remap from="cmd_vel" to="$(arg cmd_vel_topic)"/>
+      <remap from="odom" to="$(arg odom_topic)"/>
+       <!--stage simulator takes the angle instead of the rotvel as input (twist message)-->
+      
+    </node>
+  </group>
+
+
+    <!-- move_base -->
+
+
+
+</launch>

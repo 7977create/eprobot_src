@@ -1,0 +1,50 @@
+<launch>
+
+	<node pkg="tf" type="static_transform_publisher" name="base_to_link" args="0.08 0 0 0 0 0 base_footprint base_link 100" />
+ 	<node pkg="tf" type="static_transform_publisher" name="base_to_gyro" args="0.08 0 0 0 0 0 base_footprint gyro_link 100" />
+	<node pkg="tf" type="static_transform_publisher" name="base_to_laser" args="0.14 0 0.11 3.14159 0 0 base_footprint base_laser_link 100" />
+	<node pkg="tf" type="static_transform_publisher" name="base_to_camera" args="0.14 0 0.11 0 0 0 base_footprint camera_link 100" />
+	
+	<param name = "robot_description" textfile = "$(find eprobot_description)/urdf/eprobot.urdf"/>
+	<!-- <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" /> -->
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+	<node name="eprobot_joint_publisher" pkg="eprobot_description" type="rviz_move.py"  output="screen"/>
+	
+	<arg name="lidar_frame" value="base_laser_link"/>  
+	<arg name="lidar_mode" value="Boost"/>	
+	
+	<node pkg="eprobot_start" type="art_racecar.py" name="base_control" output="screen">
+		<!--param name="base_kp"    type="double" value="8.47"/>
+		<param name="base_ki"    type="double" value="39.1"/>
+		<param name="base_kd"    type="double" value="0.18"/--> 
+		
+		<param name="base_kp"    type="double" value="0.5"/>
+		<param name="base_ki"    type="double" value="17.0"/>
+		<param name="base_kd"    type="double" value="5.0"/> 
+		
+		<param name="base_kv"    type="double" value="1.0"/>
+		
+		<param name="Laser_Mode"    type="string" value="$(arg lidar_mode)"/>
+		
+		
+	</node>
+	
+    <!--include file="$(find robot_navigation)/launch/lidar/$(arg lidar_type).launch"-->
+	<include file="$(find robot_navigation)/launch/lidar/rplidar.launch">
+        <arg name="lidar_frame"            value="$(arg lidar_frame)"/>
+		<arg name="lidar_mode"            value="$(arg lidar_mode)"/>
+    </include>
+  
+	<node pkg="eprobot_joy" type="eprobot_joy_node" name="joy_controller" output="screen">
+		<param name="joystick_device"     type="string" value="/dev/input/js0"/>  
+		<param name="maxLinear_x"    type="double" value="0.5"/>
+		<param name="maxLinear_y"    type="double" value="0.2"/>
+		<param name="maxAngular_z"   type="double" value="2.5"/> 
+		<param name="joystick_mode"   type="int" value="1"/>
+	</node>
+  
+  
+
+</launch>
+
+

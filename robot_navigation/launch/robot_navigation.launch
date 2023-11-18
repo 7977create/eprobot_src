@@ -1,0 +1,60 @@
+<launch>
+  <!-- Arguments -->
+  <arg name="map_file" default="$(find robot_navigation)/maps/map.yaml"/>
+  <arg name="simulation" default= "false"/> 
+  <arg name="planner"  default="teb" doc="opt: dwa, teb"/> 
+  <arg name="open_rviz" default="false"/>
+  <arg name="lidar_mode" default="Boost"/>
+
+  <group if="$(arg simulation)">
+    <!-- simulation robot with lidar and map-->
+    <include file="$(find robot_navigation)/simulation/simulation.launch"/>
+  </group>
+
+  <group unless="$(arg simulation)">
+  
+    <node pkg="tf" type="static_transform_publisher" name="base_to_link" args="0.00 0 0 0 0 0 base_footprint base_link 100" />
+ 	<node pkg="tf" type="static_transform_publisher" name="base_to_gyro"  args="0.08 0 0 0 0 0 base_link IMU_link 100" />
+	<node pkg="tf" type="static_transform_publisher" name="base_to_laser" args="0.14 0 0.11 3.14159 0 0 base_link base_laser_link 100" />
+	<node pkg="tf" type="static_transform_publisher" name="base_to_camera" args="0.14 0 0.11 0 0 0 base_link camera_link 100" />
+  
+  
+  
+    <!-- robot with lidar -->
+    <include file="$(find robot_navigation)/launch/robot_lidar.launch">
+          <arg name="lidar_mode"            value="$(arg lidar_mode)"/>
+    </include>
+    <!-- Map server -->
+    <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)">
+      <param name="frame_id" value="map"/>
+    </node>
+    <!-- AMCL -->
+    <node pkg="amcl" type="amcl" name="amcl" output="screen">
+      <!--rosparam file="$(find robot_navigation)/param/$(env BASE_TYPE)/amcl_params.yaml" command="load" /-->
+	  <rosparam file="$(find robot_navigation)/param/EPRobot/amcl_params.yaml" command="load" />
+      <param name="initial_pose_x"            value="0.0"/>
+      <param name="initial_pose_y"            value="0.0"/>
+      <param name="initial_pose_a"            value="0.0"/>
+	  <remap from="/odom" to="/odometry/filtered"/>
+	  <remap from="scan" to="scan_filtered" />
+    </node>
+  </group>
+
+  <!-- move_base -->
+  <include file="$(find robot_navigation)/launch/move_base.launch" >
+    <arg name="planner"            value="$(arg planner)"/>
+    <arg name="simulation"            value="$(arg simulation)"/>
+    <arg name="odom_topic"            value="/odometry/filtered"/>
+  </include>
+  
+  <node name="ekf_se" pkg="robot_localization" type="ekf_localization_node" clear_params="true">
+    <rosparam command="load" file="$(find robot_navigation)/param/EPRobot/ekf_params.yaml"/>
+  </node>
+
+  <!-- rviz -->
+  <group if="$(arg open_rviz)"> 
+    <node pkg="rviz" type="rviz" name="rviz" required="true"
+          args="-d $(find robot_navigation)/rviz/navigation.rviz"/>
+  </group>
+
+</launch>

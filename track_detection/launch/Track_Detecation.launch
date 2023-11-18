@@ -1,0 +1,34 @@
+<launch>
+
+  <node pkg="uvc_camera" type="uvc_camera_node" name="uvc_camera" output="screen">
+      <param name="device"            value="/dev/video0" /> 
+      <param name="camera_info_url"   value=""/>
+      <param name="camera_name"       value="rgb_Astra_Orbbec"/>
+      <param name="width"             value="640" />
+      <param name="height"            value="480" />
+      <param name="fps"               value="30" />
+      <param name="frame_id"          value="camera_rgb_frame" />
+        
+      <remap from="camera_info"      to="/camera/rgb/camera_info"/>
+      <remap from="image_raw"        to="/camera/rgb/image_raw"/>
+  </node>
+  
+  <!--node pkg="eprobot_start" type="art_racecar.py" name="base_control" output="screen">	
+		<param name="base_kp"    type="double" value="0.5"/>
+		<param name="base_ki"    type="double" value="17.0"/>
+		<param name="base_kd"    type="double" value="5.0"/> 
+		
+		<param name="base_kv"    type="double" value="1.0"/>
+  </node-->
+  
+  
+  <node pkg="track_detection" type="Track_Detection_node" name="Track_Detection_node" output="screen">
+  	<param name="GyraThreshold" type="int"    	value="60"/>
+  	<param name="StartMove"     type="bool"    	value="false"/>
+  	<param name="MixKP"     	type="double"   value="0.006"/>
+  	<param name="MaxKP"     	type="double"   value="0.008"/>
+  	<param name="HiBotSpeed"     type="double"   value="0.2"/>
+	</node>
+
+
+</launch>

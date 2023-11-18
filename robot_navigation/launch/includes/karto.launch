@@ -1,0 +1,10 @@
+<launch>
+  <arg name="simulation" default= "false"/> 
+  <param name="/use_sim_time" value="$(arg simulation)" />  
+  
+  <remap from="scan" to="scan_filtered" />
+  <!-- slam_karto -->
+  <node pkg="slam_karto" type="slam_karto" name="slam_karto" output="screen">
+    <rosparam command="load" file="$(find robot_navigation)/config/karto_params.yaml" />
+  </node>
+</launch>

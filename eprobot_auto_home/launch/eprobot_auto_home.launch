@@ -1,0 +1,16 @@
+<launch>	
+	<node pkg="eprobot_auto_home" type="auto_home.py" name="eprobot_auto_home" output="screen">		
+		<param name="battery_topic"  type="string" value="battery"/>
+		<param name="battery_min"  type="double" value="12.0"/>	
+		<param name="target_pose_x"  type="double" value="0.0"/>	
+		<param name="target_pose_y"  type="double" value="0.0"/>
+		<param name="target_pose_z"  type="double" value="0.0"/>
+		<param name="target_ori_x"  type="double" value="0.0"/>
+		<param name="target_ori_y"  type="double" value="0.0"/>
+		<param name="target_ori_z"  type="double" value="0.0"/>
+		<param name="target_ori_w"  type="double" value="1.0"/>
+	</node>
+
+</launch>
+
+
